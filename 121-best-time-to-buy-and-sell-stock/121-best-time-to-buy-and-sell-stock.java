@@ -7,9 +7,10 @@ class Solution {
         
         while(right < prices.length){
             
-            int tempProfit = prices[right] - prices[left];
             
             if(prices[left] < prices[right]){
+
+                int tempProfit = prices[right] - prices[left];
                 
                 maxProfit = Math.max(tempProfit,maxProfit);
             }
