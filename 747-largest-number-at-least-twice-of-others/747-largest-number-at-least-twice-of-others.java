@@ -1,31 +1,29 @@
 class Solution {
     public int dominantIndex(int[] nums) {
         
-        int n = nums.length;
+        int[] tempNums = new int[nums.length]; 
         
-        int max=nums[0];
+        System.arraycopy(nums,0,tempNums,0,nums.length);
+        Arrays.sort(tempNums);
         
-        int mi=0;
         
-        for(int i=0;i<n;i++){
+        int maxNUm = tempNums[ nums.length -1];
+        for(int i = 0; i <= tempNums.length - 2; i++){
             
-            if(nums[i]>max){
-                
-                max=nums[i];
-                mi=i;
-                
-            }
-        }
-        for(int i=0;i<n;i++){
-            
-            if(i!=mi && nums[i]*2>max){
+            if(tempNums[i] * 2 > maxNUm){
                 
                 return -1;
-                
+            }
+            
+        }
+        
+        for(int tk = 0 ; tk < nums.length ; tk++){
+            
+            if(nums[tk] == maxNUm){
+                return tk;
             }
         }
         
-        return mi;
-        
+        return -1;
     }
 }
