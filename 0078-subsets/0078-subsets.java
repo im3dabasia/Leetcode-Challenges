@@ -1,19 +1,37 @@
 class Solution {
-  public List<List<Integer>> subsets(int[] nums) {
-      
-      
     List<List<Integer>> output = new ArrayList();
-    output.add(new ArrayList<Integer>());
-
-    for (int num : nums) {
-      List<List<Integer>> newSubsets = new ArrayList();
-      for (List<Integer> curr : output) {
-        newSubsets.add(new ArrayList<Integer>(curr){{add(num);}});
-      }
-      for (List<Integer> curr : newSubsets) {
-        output.add(curr);
-      }
-    }
-    return output;
+    List<Integer> tempList = new ArrayList();
+    
+    
+    public List<List<Integer>> subsets(int[] nums) {
+        
+        printf(0, nums);
+        
+        return output;
   }
+    
+    private void printf(int indx, int[] nums){
+        
+        output.add( new ArrayList<Integer>(tempList) );
+        
+        if(indx == nums.length ){
+            
+            return ;
+        }
+        
+        
+        for(int i = indx; i < nums.length; i++ ){
+            
+        tempList.add(nums[i]);
+        printf(i + 1, nums);
+                
+        tempList.remove( tempList.size() - 1);
+            
+            
+        }
+        return;
+        
+
+    }
+    
 }
