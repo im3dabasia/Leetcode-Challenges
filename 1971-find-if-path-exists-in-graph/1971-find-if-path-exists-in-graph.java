@@ -17,6 +17,7 @@ class Solution {
             
             
         }
+        System.out.println(map);
         
         Set<Integer> visited = new HashSet<>();
         Queue<Integer> queue = new LinkedList<>();
@@ -26,7 +27,7 @@ class Solution {
         
         while(!queue.isEmpty()){
             
-            int currNode = queue.poll();
+            int currNode = queue.remove();
             
             if(currNode == destination )return true;
             
