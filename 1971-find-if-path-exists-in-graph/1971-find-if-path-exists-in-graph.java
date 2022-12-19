@@ -27,7 +27,7 @@ class Solution {
         
         while(!queue.isEmpty()){
             
-            int currNode = queue.remove();
+            int currNode = queue.poll();
             
             if(currNode == destination )return true;
             
