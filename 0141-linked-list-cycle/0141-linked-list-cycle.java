@@ -12,39 +12,30 @@
 public class Solution {
     public boolean hasCycle(ListNode head) {
         
-//         Approach2 
-
-        if( head == null) return false;
-        
-        if( head.next == null ) return false;
+        if( head == null || head.next == null ) return false;
         
         ListNode slowPtr = head;
         ListNode fastPtr = head;
         
         while(slowPtr != null){
             
-
-            
-            if(fastPtr.next == null || fastPtr.next.next == null){
-                
+            if(fastPtr.next == null || fastPtr.next.next == null) {
                 return false;
-
                 
             }
             
             slowPtr = slowPtr.next;
             fastPtr = fastPtr.next.next;
             
-            if(slowPtr == fastPtr){
-                
-                return true;
-                
-            }
+            if(slowPtr == fastPtr) return true;
             
         }
         return false;
-
         
+    }
+}
+
+// Approach 1
         
 //         ListNode temp = new ListNode();
 //         HashMap<ListNode, Integer> map = new HashMap<>();
@@ -67,5 +58,33 @@ public class Solution {
 //         }
         
 //         return false;
-    }
-}
+
+//         Approach2 
+
+//         if( head == null) return false;
+        
+//         if( head.next == null ) return false;
+        
+//         ListNode slowPtr = head;
+//         ListNode fastPtr = head;
+        
+//         while(slowPtr != null){
+
+//             if(fastPtr.next == null || fastPtr.next.next == null){
+                
+//                 return false;
+
+                
+//             }
+            
+//             slowPtr = slowPtr.next;
+//             fastPtr = fastPtr.next.next;
+            
+//             if(slowPtr == fastPtr){
+                
+//                 return true;
+                
+//             }
+            
+//         }
+//         return false;
