@@ -39,54 +39,20 @@ public class Solution {
         return null;
     }
 }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
         
 // Approach 1
 //         ListNode temp1 = headA;
 //         ListNode temp2 = headB;
-        
-        
 //         while(temp1 != null){
-            
 //             while (temp2 != null){
-                
-//                 if(temp1 == temp2){
-                    
+//                 if(temp1 == temp2){        
 //                     return temp1;
 //                 }
 //             }
 //             temp2 = headB;
 //             temp1 = temp1.next;
 //         }
-        
 //         return null;
-        
 //     }
 // }
