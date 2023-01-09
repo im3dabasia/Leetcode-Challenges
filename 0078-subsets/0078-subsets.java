@@ -1,37 +1,28 @@
 class Solution {
-    List<List<Integer>> output = new ArrayList();
-    List<Integer> tempList = new ArrayList();
-    
+    List<List<Integer>> output;
     
     public List<List<Integer>> subsets(int[] nums) {
         
-        printf(0, nums);
+        output = new ArrayList<>();
         
+        if(nums == null || nums.length == 0)return output;
+        
+        helper( nums, new ArrayList<Integer>(), 0);
         return output;
+        
   }
-    
-    private void printf(int indx, int[] nums){
+    private void helper(int[] nums, List<Integer> temp, int index){
         
-        output.add( new ArrayList<Integer>(tempList) );
-        
-        if(indx == nums.length ){
-            
-            return ;
+        if(index >= nums.length){
+            output.add(new ArrayList<>(temp));
+            return;
         }
         
+        temp.add(nums[index]);
+        helper(nums,temp, index + 1);
         
-        for(int i = indx; i < nums.length; i++ ){
-            
-        tempList.add(nums[i]);
-        printf(i + 1, nums);
-                
-        tempList.remove( tempList.size() - 1);
-            
-            
-        }
-        return;
+        temp.remove(temp.size() - 1);
         
-
+        helper(nums, temp, index + 1);
     }
-    
 }
