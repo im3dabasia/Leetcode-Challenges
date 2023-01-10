@@ -10,14 +10,15 @@ class Solution {
     private void helper(char[] arr, int index){
         
         if(index == arr.length){
-            if(!temp.contains(new String(arr))){
+            // if(!temp.contains(new String(arr))){
                 temp.add(new String(arr));
-            }
+            // }
             return;
         }
         
         if(Character.isDigit(arr[index])){
             helper(arr, index + 1);
+            return;
         }
         // System.out.println(1 + new String(arr));
         
