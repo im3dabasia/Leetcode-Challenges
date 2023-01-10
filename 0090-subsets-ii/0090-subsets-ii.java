@@ -3,29 +3,23 @@ class Solution {
     List<Integer> temp = new ArrayList<>();
     public List<List<Integer>> subsetsWithDup(int[] nums) {
         Arrays.sort(nums); 
-        printf(0, nums);
+        helper(0, nums, new ArrayList<>());
         
         return output;
         
     }
-    
-    private void printf(int index, int[] nums){
+    private void helper(int index, int[] nums, ArrayList<Integer> temp){
         
-        output.add(new ArrayList<Integer>(temp) );
-        
-        if(index == nums.length) {
+        if(index == nums.length ){
+            if(!output.contains(temp)){
+                output.add(new ArrayList<>(temp));
+            }
             return;
-            
         }
         
-        for( int i = index; i < nums.length; i++ ){
-            
-            
-            if(i != index && nums[i] == nums[i - 1]) continue;
-            
-            temp.add(nums[i]);
-            printf(i + 1, nums);
-            temp.remove(temp.size() - 1);
-        }
+        temp.add(nums[index]);
+        helper(index + 1, nums, temp);
+        temp.remove(temp.size() - 1);
+        helper(index + 1, nums , temp);
     }
 }
