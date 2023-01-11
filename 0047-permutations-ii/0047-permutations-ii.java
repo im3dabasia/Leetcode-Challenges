@@ -4,6 +4,7 @@ class Solution {
     public List<List<Integer>> permuteUnique(int[] nums) {
         res = new ArrayList<>();
         boolean[] used = new boolean[nums.length];
+        Arrays.sort(nums);
         backTracker(nums, new ArrayList<>() , used);
         return res;
     }
@@ -15,7 +16,6 @@ class Solution {
             if(!res.contains(temp)){
                 res.add(new ArrayList<>(temp));
             }
-            // res.add(new ArrayList<>(temp));
             return;
         }
         else{
