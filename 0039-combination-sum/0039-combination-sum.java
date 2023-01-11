@@ -16,11 +16,11 @@ class Solution {
             return;
         }
         else if(target == 0 ){
-            // Collections.sort(temp);
+            Collections.sort(temp);
             
-            // if(!output.contains(temp)){
+            if(!output.contains(temp)){
                 output.add(new ArrayList<>(temp));
-            // }
+            }
             return;
         }
         else{
