@@ -20,13 +20,13 @@ class Solution {
             helper(arr, index + 1);
             return;
         }
-        else{
+        // else{
             
         arr[index]  = Character.toLowerCase(arr[index]);
         helper(arr, index + 1);
         arr[index]  = Character.toUpperCase(arr[index]);
         helper(arr, index + 1);
-        }
+        // }
     
         
     }
