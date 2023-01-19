@@ -14,46 +14,22 @@ class Solution
 	public static void bubbleSort(int arr[], int n)
     {
         //code here
-        // helper(arr, n - 1, 0 );
-        if( n == 1){
-            return;
-        }
-        
-        for(int i = 0; i < n - 1; i++){
-            
-            if(arr[i] > arr[i + 1]){
-                int temp = arr[i];
-                arr[i ] = arr[i + 1];
-                arr[i + 1] = temp; 
+        for(int j =0; j < arr.length; j++){
+            for(int i = 1 ; i < arr.length; i++){
+                
+                if(arr[i] < arr[i-1]){
+                    swap(arr,i-1, i);
+                }
             }
+            
         }
-        bubbleSort(arr, n - 1);
+    }
+    private static void swap(int[] arr, int indexA, int indexB){
+        int temp = arr[indexA];
+        arr[indexA] = arr[indexB];
+        arr[indexB] = temp;
         
     }
-    
-    // private static void helper(int[] arr, int row, int col){
-        
-    //     if(row == 0 ){
-    //         return;
-    //     }
-        
-    //     if(  (col < row ) && (arr[col] > arr[col + 1])){
-            
-    //         int temp = arr[col];
-    //         arr[col] = arr[col + 1];
-    //         arr[col + 1] = temp; 
-    //     }
-        
-    //     if(col < row){
-    //         // System.out.println(row + " " +( col + 1));
-    //         helper(arr , row , col + 1);
-    //     }
-    //     else{
-    //         // System.out.println(row - 1  );
-    //         helper(arr, row - 1 , 0);
-    //     }
-        
-    // }
 }
 
 //{ Driver Code Starts.
