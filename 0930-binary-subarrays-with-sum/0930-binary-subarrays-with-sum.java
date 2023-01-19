@@ -11,7 +11,7 @@ class Solution {
  
         for (int x: P) {
             ans += count.getOrDefault(x, 0);
-            System.out.println(x + " " + ans);
+            // System.out.println(x + " " + ans);
             count.put(x+S, count.getOrDefault(x+S, 0) + 1);
         }
 
