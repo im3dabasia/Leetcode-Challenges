@@ -44,14 +44,14 @@ class Compute {
         
         // System.out.println(N);
         for(int i = 0; i < N + 1; i++){
-            allSum = allSum + i;    
+            allSum = allSum ^ i;    
         }
         for(int i = 0; i < A.length; i++){
             // System.out.println(A[i]);
-            arrSum = arrSum + A[i];
+            allSum = allSum ^ A[i];
         }
         // System.out.println(allSum + " " + arrSum);
     
-        return allSum - arrSum;
+        return allSum ;
     }
 }
