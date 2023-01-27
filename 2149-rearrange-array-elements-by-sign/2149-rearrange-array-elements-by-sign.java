@@ -1,28 +1,29 @@
 class Solution {
     public int[] rearrangeArray(int[] nums) {
-        int[] pos = new int[nums.length / 2];
-        int[] neg = new int[nums.length / 2];
         
-//         pointers
         int idx = 0;
-        int idx2 = 0;
+        int idx2 =0;
         
+//         Making arrays
+        int[] odd = new int[nums.length/2];
+        int[] even = new int[nums.length/2];
         
         for(int i = 0 ; i < nums.length; i++){
-            if(nums[i] > 0){
-                pos[idx++] = nums[i];
+            if( nums[i]  > 0){
+                odd[idx++] = nums[i];
             }else{
-                neg[idx2++] = nums[i];
+                even[idx2++] = nums[i];
             }
-
         }
+        System.out.println(Arrays.toString(odd));
+        System.out.println(Arrays.toString(even));
+        
         
         idx = 0;
         idx2 = 0;
-        for(int i = 0; i < nums.length; i = i + 2){
-            nums[i] = pos[idx++];
-            nums[i+ 1] = neg[idx2++];
-            
+        for(int i = 0 ;i< nums.length; i+=2){
+            nums[i] = odd[idx++];
+            nums[i + 1] = even[idx2++];
         }
         return nums;
     }
