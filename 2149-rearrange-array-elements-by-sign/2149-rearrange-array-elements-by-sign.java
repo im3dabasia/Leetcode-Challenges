@@ -15,8 +15,6 @@ class Solution {
                 even[idx2++] = nums[i];
             }
         }
-        System.out.println(Arrays.toString(odd));
-        System.out.println(Arrays.toString(even));
         
         
         idx = 0;
