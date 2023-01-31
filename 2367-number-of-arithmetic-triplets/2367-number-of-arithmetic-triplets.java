@@ -11,7 +11,7 @@ class Solution {
             int tempCnt = 1;
 
             while(idx >= 0  ){
-                System.out.println(top + " " + nums[idx]);
+                // System.out.println(top + " " + nums[idx]);
                 
                 if(top - nums[idx] != diff) idx--;
                 else{
@@ -22,7 +22,7 @@ class Solution {
                     idx--;
                 }
                 
-                System.out.println(  "tempCnt:" + tempCnt);
+                // System.out.println(  "tempCnt:" + tempCnt);
                 
                 if(tempCnt == 3){
                     cnt++;
