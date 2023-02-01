@@ -16,24 +16,21 @@
 class Solution {
     int dm;
     public int diameterOfBinaryTree(TreeNode root) {
-            
-        dm = 0;
-        helper(root, 0);
+        dm =0;
+        
+        helper(root);
         return dm;
-        
     }
-    private int helper(TreeNode node, int diameter){
+    
+    private int helper(TreeNode temp){
+        if (temp == null )return 0;
         
-        if(node == null) return 0;
-            
-        // System.out.println(node.val);
-        int left = helper(node.left, diameter);
-        // System.out.println("L" +node.val + " " + left );
+        int left = helper(temp.left);
         
-        int right = helper(node.right, diameter);
-        // System.out.println("R" + node.val + " " + right );
+        int right = helper(temp.right);
         
         dm = Math.max(dm, left + right);
+        
         return 1 + Math.max(left, right);
     }
 }
