@@ -26,7 +26,7 @@ class Solution {
         
         if(node == null) return 0;
             
-        System.out.println(node.val);
+        // System.out.println(node.val);
         int left = helper(node.left, diameter);
         // System.out.println("L" +node.val + " " + left );
         
