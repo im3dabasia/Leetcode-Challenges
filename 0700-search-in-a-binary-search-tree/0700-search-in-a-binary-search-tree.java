@@ -17,15 +17,12 @@ class Solution {
     TreeNode res;
     public TreeNode searchBST(TreeNode root, int val) {
         
-        TreeNode temp = new TreeNode();
-        
-         TreeNode ab = helper(root, val);
+        TreeNode ab = helper(root, val);
         return res;
         
     }
     private TreeNode helper(TreeNode root, int val){
         if(root == null) return null;
-        System.out.println(root.val);
         
         if(root.val == val){
             res = root;
@@ -34,7 +31,6 @@ class Solution {
         
         helper(root.left, val);
         helper(root.right, val);
-        
         return null;
         
     }
