@@ -1,32 +1,21 @@
 class Solution {
     public int[][] sortTheStudents(int[][] score, int k) {
         
-        int[] order = new int[score.length];
-        int[] temp = new int[score.length];
+        int[] sortingK = new int[score.length];
+        HashMap<Integer, int[]> map = new HashMap<>();
         
-        for(int i =0; i < score.length; i++){
-            temp[i] = score[i][k];
+        for(int i = 0 ; i <  score.length; i++){
+            
+            sortingK[i] = score[i][k];
+            map.put(score[i][k], score[i]);
         }
-
-        Arrays.sort(temp);
-        System.out.println(Arrays.toString(temp));
         
-        int[][] res = new int[score.length][score[0].length];
-        for(int i =0; i< score.length; i++){
-            for(int j = 0; j < score.length; j++){
-                if(temp[temp.length - 1 - i] == score[j][k]){
-                    res[i] = score[j];
-                }
-            }
+        Arrays.sort(sortingK);
+        int idx = sortingK.length - 1;
+        for(int i = 0 ; i < score.length;i++){
+            score[i] = map.get(sortingK[idx--]);
         }
-        return res;
+        return score;
+        
     }
-    
-//     private void swapper(int posA, int posB, int[][] score){
-        
-//         int[] temp = score[posA];
-//         score[posA] = score[posB];
-//         score[posB] = temp;
-        
-//     }
 }
