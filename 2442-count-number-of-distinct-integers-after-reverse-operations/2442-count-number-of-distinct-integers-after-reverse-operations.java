@@ -1,37 +1,28 @@
 class Solution {
     public int countDistinctIntegers(int[] nums) {
-        // System.out.println(nums.length);
         
-        HashMap<Integer, Boolean> myMap = new HashMap<>();
-        for(int i = 0; i < nums.length; i++){
-            myMap.put(nums[i], true);
-        }
+        HashMap<Integer, Integer> map = new HashMap<>();
         
-        // System.out.println(myMap.size());
-        int cnt = 0;
-        
-        for(int i = 0 ; i < nums.length; i++){
+        for(int i =0; i < nums.length; i++){
+            map.put(nums[i], 1);
             
-            int temp = nums[i];
+            int tempNum = 0;
+            int num2rev = nums[i];
+            // System.ou//t.println(nums[i]);
+            int k =0;
             
-            int res = 0;
-            while(temp != 0){
+            while(num2rev > 0){
+                // if(k > 0) tempNum = tempNum*10;
+                tempNum = (tempNum*10) +(num2rev%10);
+                num2rev = num2rev/10;
+                k++;
                 
-                int mod = temp % 10;
-                res = res * 10 + mod;
+                // System.out.println(tempNum + " " + num2rev);
                 
-                temp = temp /10;
             }
-            
-            if(!myMap.containsKey(res)){
-                myMap.put(res, true);
-                // cnt++;
-            }
-            
-            
-            
+            // System.out.println(nums[i] + " " + tempNum);
+            map.put(tempNum, 1);
         }
-        
-        return myMap.size() ;
+        return map.size();
     }
 }
