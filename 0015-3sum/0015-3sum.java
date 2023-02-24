@@ -24,6 +24,8 @@ class Solution {
                         temp.add(nums[low]);
                         temp.add(nums[high]);
 
+                        //Since its sorted and we are already handling duplicated by code below 
+                        // no need to check for duplicates in the res DS. it is complicating the algorithm
                         // if(!res.contains(temp)){
                         //     res.add(temp);
                         // }
@@ -51,43 +53,25 @@ class Solution {
 
 
 // Approach 1
-        
 //         List<List<Integer>> res = new ArrayList<>();
-        
-        
 //         for (int i = 0; i < nums.length -2 ; i++){
-            
 //             for(int j = i + 1;  j < nums.length -1 ; j++){
 //                 List<Integer> temp = new ArrayList<>();
-                
 //                 for(int k = j + 1; k < nums.length; k++){
-                    
 //                     if (nums[i] + nums[j] + nums[k] == 0){
-                        
 //                         temp.add(nums[i]);
 //                         temp.add(nums[j]);
 //                         temp.add(nums[k]);
-                        
 //                         Collections.sort(temp);
-                        
-  
 //                     }
 //                     System.out.println(temp);
-                    
 //                     if (temp.size() != 0 && !res.contains(temp)){
 //                     System.out.println( "222" + temp);
-                        
 //                             res.add(temp);
 //                             // temp.clear();
 //                     }
-                    
 //                     temp.clear();
-                    
-                      
 //                 }
-                
 //             }
-            
 //         }
 //         return res;
-        
