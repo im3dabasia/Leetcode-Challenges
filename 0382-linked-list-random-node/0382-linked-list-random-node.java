@@ -27,16 +27,16 @@ class Solution {
     }
     
     public int getRandom() {
-//         double ans =  Math.random();
-//         // System.out.println(ans);
+        double ans =  Math.random();
+        // System.out.println(ans);
         
-//         int num = (int) (ans *size);
-//         // System.out.println(num);
+        double num =  (ans *size);
+        // System.out.println(num);
         
-//         return temp.get( ((int)Math.random()) * size);
+        return temp.get( (int) num);
         
-        int pick = (int)(Math.random() * size);
-        return temp.get(pick);
+//         int pick = (int)(Math.random() * size);
+//         return temp.get(pick);
     }
 }
 
