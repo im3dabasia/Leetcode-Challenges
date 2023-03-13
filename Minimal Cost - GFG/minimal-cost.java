@@ -28,33 +28,60 @@ class GFG{
 
 //User function Template for Java
 
+// class Solution{
+//     public int minimizeCost(int arr[],int N,int K){
+//         //code here
+//          int dp[] = new int[N];
+//          Arrays.fill(dp, -1);
+//          return helper(arr, N- 1, K, dp);
+//     }
+    
+//     private int helper(int[] arr, int index, int k, int[] dp){
+        
+//         if(index == 0) return 0;
+        
+//         if(dp[index] != -1)return dp[index];
+        
+//         int mmSteps = Integer.MAX_VALUE;
+//         int prob =Integer.MAX_VALUE;
+//         for(int i = 1; i <= k; i++){
+//             if(index - i>= 0){
+//                 // System.out.println(index + " " + (index - i));
+//                 prob = helper(arr, index - i, k, dp) + Math.abs(arr[index] - arr[index - i]);
+            
+//             mmSteps = Math.min(mmSteps, prob);
+//             // System.out.println("mmsteps: " + index + " " +mmSteps);
+                
+//             }
+//         }
+        
+//         return dp[index] =  mmSteps;
+//     }
+// }
+
 class Solution{
     public int minimizeCost(int arr[],int N,int K){
         //code here
          int dp[] = new int[N];
-         Arrays.fill(dp, -1);
-         return helper(arr, N- 1, K, dp);
-    }
-    
-    private int helper(int[] arr, int index, int k, int[] dp){
-        
-        if(index == 0) return 0;
-        
-        if(dp[index] != -1)return dp[index];
-        
-        int mmSteps = Integer.MAX_VALUE;
-        int prob =Integer.MAX_VALUE;
-        for(int i = 1; i <= k; i++){
-            if(index - i>= 0){
-                // System.out.println(index + " " + (index - i));
-                prob = helper(arr, index - i, k, dp) + Math.abs(arr[index] - arr[index - i]);
-            
-            mmSteps = Math.min(mmSteps, prob);
-            // System.out.println("mmsteps: " + index + " " +mmSteps);
-                
-            }
-        }
-        
-        return dp[index] =  mmSteps;
+         Arrays.fill(dp, 0);
+         
+         for(int i = 1; i < N; i++){
+             
+             int mmSteps = Integer.MAX_VALUE;
+
+             for(int j = 1; j <= K; j++){
+                 
+                    if(i - j>= 0){
+                        int jump = dp[i-j]+ Math.abs(arr[i]- arr[i-j]);
+                        mmSteps = Math.min(mmSteps, jump);
+                    }
+                 
+             }
+             dp[i] = mmSteps;
+         }
+        //  System.out.println(Arrays.toString(dp));
+         return dp[N-1];
+
     }
 }
+    
