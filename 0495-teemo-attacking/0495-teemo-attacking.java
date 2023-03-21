@@ -3,22 +3,22 @@ class Solution {
         int cnt = 0;
         
         if(timeSeries.length == 1) return duration;
+        
+        if(timeSeries.length >1) cnt += duration;
         for(int i = timeSeries.length - 1; i >0 ; i--){
             
-            if(i == timeSeries.length - 1){
-                cnt += duration;
-            }
+//             if(i == timeSeries.length - 1){
+//                 cnt += duration;
+//             }
             
             if(timeSeries[i] - timeSeries[i - 1] <= duration){
                 cnt+= timeSeries[i] - timeSeries[i - 1];
                 
             }
-            
-            if(timeSeries[i] - timeSeries[i - 1] > duration){
+            else{
                 cnt += duration;
             }
             
-            // cnt+=   
         }
         return cnt;
     }
