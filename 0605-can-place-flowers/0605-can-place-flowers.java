@@ -10,7 +10,7 @@ class Solution {
             
             
             if(emptyLeft && emptyRight){
-                System.out.println(i);
+                // System.out.println(i);
                 if(arr[i] != 1) cnt++;
                 
                 arr[i] = 1;
@@ -20,7 +20,7 @@ class Solution {
             // System.out.println(Arrays.toString(arr));
             
         }
-        System.out.println(cnt);
+        // System.out.println(cnt);
         return cnt >= n;
     }
 }
