@@ -1,32 +1,34 @@
 class Solution {
+    List<Integer> temp ;
     public int minPathSum(int[][] grid) {
+        temp = new ArrayList<>();
+        int rows = grid.length;
+        int cols = grid[0].length;
         
-        if (grid.length == 1 && grid[0].length == 1) return grid[0][0];
+        int[][] dp = new int[rows][cols];
         
-        int n = grid.length;
-        int m = grid[0].length;
-        int dp[][]=new int[n][m];
-        
-        for(int row[]: dp)
-            Arrays.fill(row,-1);
-        int a = helper(n - 1, m -1, grid, dp);
-        
-        return dp[n -1][m -1];
-        
+        for(int[] arr: dp){
+            Arrays.fill(arr, -1);
+        }
+        return helper(grid, rows -1, cols -1, dp);
     }
     
-    private int helper(int row, int col , int[][] grid, int[][] dp){
-        
-        if( row == 0 && col == 0) return  grid[0][0];
-        if( row < 0 || col < 0) return 100000;
-        
-        if(dp[row][col]!=-1) return dp[row][col];
+    private int helper(int[][] grid, int row, int col, int[][] dp){
 
+        if( row == 0 && col == 0) return  grid[0][0];
         
-        int left = grid[row][col] + helper(row , col-1, grid, dp);
-        int up = grid[row][col] + helper(row -1 , col, grid, dp);
+        if(row < 0 || col < 0) return (int)Math.pow(10,9);
+
+        if(dp[row][col]!=-1) return dp[row][col];
+        // System.out.println(row + " " + col);
+    
+        int left = grid[row][col] + helper(grid, row, col - 1, dp);
+        int up = grid[row][col] + helper(grid, row - 1, col, dp);
         
-        return dp[row][col] =Math.min(left, up);
+        return dp[row][col] =  Math.min(left, up);
+        
         
     }
 }
+
+//reccurence relatiion 
