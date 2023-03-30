@@ -9,16 +9,16 @@ class Solution {
     }
     
     private void helper(int n, int left, int right, String str){
-        System.out.println(left + " " + right);
+        // System.out.println(left + " " + right);
         
         // if(right < left) return;
         if(left > n || right > n){
             return;
         }
-            System.out.println(str + " String" + str.length());
+            // System.out.println(str + " String" + str.length());
         
         if(str.length() == (n*2)){
-            System.out.println("Added" );
+            // System.out.println("Added" );
             
             res.add(str);
             return;
