@@ -7,11 +7,11 @@ var compose = function(functions) {
         let tmp = x;
         let ans = 0;
         for(let i = functions.length -1; i >= 0; i--){
-            console.log(functions[i].toString())
+            // console.log(functions[i].toString())
             ans =  functions[i](tmp)
-            console.log(ans);
+            // console.log(ans);
             tmp = ans;
-            console.log(tmp);
+            // console.log(tmp);
             
         }
         
