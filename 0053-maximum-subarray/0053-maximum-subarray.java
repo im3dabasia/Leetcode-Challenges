@@ -14,9 +14,7 @@ class Solution {
             mx = Math.max(mx,sum);
             // System.out.println(i + " " + mx);
             
-            if(mx < 0){
-                sum = 0;
-            }
+            
             if(sum < 0){
                 sum = 0;
             }
