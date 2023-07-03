@@ -1,23 +1,23 @@
 class Solution {
     public List<List<Integer>> subsets(int[] nums) {
-        List<List<Integer>> res = new ArrayList<>();
         
-        helper(0, nums, new ArrayList<>(), res);
+        List<List<Integer>> res  = new ArrayList<>();
+        List<Integer> temp = new ArrayList<>();
+        backTrack(res, temp, nums, 0);
+        
         return res;
         
     }
-    
-    private void helper(int index, int nums[], List<Integer> tmp, List<List<Integer>> res){
+    private void backTrack(List<List<Integer>> res, List<Integer> temp, int[] nums, int start){
         
-        if(index == nums.length){
-            res.add(new ArrayList<>(tmp));
-            return;
+        res.add(new ArrayList<>(temp));
+        
+        for(int i = start; i < nums.length; i++ ){
+            if(i > start && nums[i] == nums[i -1]) continue;
+            
+            temp.add(nums[i]);
+            backTrack(res, temp, nums, i + 1);
+            temp.remove(temp.size() - 1);
         }
-        
-        tmp.add(nums[index]);
-        helper(index + 1, nums, tmp, res);
-        tmp.remove(tmp.size() - 1);
-        helper(index + 1, nums, tmp, res);
-        
     }
 }
