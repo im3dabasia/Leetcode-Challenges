@@ -1,38 +1,36 @@
 class Solution {
-    List<List<Integer>> output;
-    public List<List<Integer>> combinationSum2(int[] candidates, int target) {
-        output = new ArrayList<>();
-
-        Arrays.sort(candidates);
-        helper(candidates, new ArrayList<>(), target,  0 );
+    public List<List<Integer>> combinationSum2(int[] nums, int target) {
         
-        return output;
+        List<List<Integer>> res = new ArrayList<>();
+        List<Integer> tmp = new ArrayList<>();
+        
+        Arrays.sort(nums);
+
+        backTrack(nums,0, target, tmp, res);
+        
+        return res;
+        
     }
     
-    private void helper(int[] candidates, List<Integer> temp, int target, int index){
+    private void backTrack(int nums[],int index, int target, List<Integer> tmp, List<List<Integer>> res){
         
-
-        if(target < 0) {
+        // System.out.println(tmp + " " + target);
+        if(target < 0){
             return;
         }
-        else if(target == 0 ){
-            // Collections.sort(temp);
-            
-            // if(!output.contains(temp)){
-                output.add(new ArrayList<>(temp));
-            // }
-            return;
-        }
+        else if(target == 0    ) res.add(new ArrayList<>(tmp));
         else{
-            
-            for(int i = index; i < candidates.length ; i++){
-                
-                if( (i > index && candidates[i] == candidates[i - 1])) continue;
-                temp.add(candidates[i]);
-                helper(candidates, temp, target - candidates[i], i + 1 );
-                temp.remove(temp.size() - 1);
-            }   
-        }
-    }
+            for(int i = index; i < nums.length; i++){
+                if(i > index && nums[i] == nums[i-1]) continue; // skip duplicates
 
+            
+                tmp.add(nums[i]);
+                backTrack(nums, i + 1, target - nums[i], tmp, res);
+                tmp.remove(tmp.size() - 1);
+            }
+            
+        }    
+
+        
+    }
 }
