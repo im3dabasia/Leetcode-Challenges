@@ -126,18 +126,26 @@ class Tree
     ArrayList<Integer> leftView(Node root)
     {
       // Your code here
-      ArrayList<Integer> result = new ArrayList<>();
-      helper(root, result, 0);
-      return result;
+         ArrayList<Integer> tmp = new ArrayList<>();
+        traversor(root, tmp, 0);
+        
+        return tmp;
+        
+        
     }
-    private void helper(Node node, List<Integer> result, int currDepth){
-        if(node == null) return;
+    
+    private void traversor(Node node, ArrayList<Integer> tmp, int cnt ){
         
-        if(currDepth == result.size()) result.add(node.data);
-        
-        helper(node.left, result, currDepth + 1);
-        helper(node.right, result, currDepth + 1);
+        if(node == null){
+            return;
+        }
 
+        cnt++;
         
+        if(tmp.size() < cnt){
+            tmp.add(node.data);
+        }
+        traversor(node.left, tmp,  cnt);
+        traversor(node.right, tmp, cnt);
     }
-}
+    }
