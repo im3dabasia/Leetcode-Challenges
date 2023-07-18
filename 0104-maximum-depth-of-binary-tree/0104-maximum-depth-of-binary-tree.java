@@ -14,30 +14,19 @@
  * }
  */
 class Solution {
-    int height;
     public int maxDepth(TreeNode root) {
-        height = 0;
         
-        traversor(root, 0);
-        return height;
-    }
-    
-    private void traversor(TreeNode temp, int index){
-        if(temp == null){
-            
-            if(index > height){
-                height = index;
-            }
-            return;
+        if(root == null){
+            return 0;
         }
+        // System.out.println(root.val);
         
-        else{
-            
-            
-            traversor(temp.left, index + 1);
-            traversor(temp.right, index + 1);
-            
-        }
+        int lh =  maxDepth(root.left);
+        int rh =  maxDepth(root.right);
+        
+        
+        return  1+ Math.max(lh, rh);
+        
         
     }
 }
