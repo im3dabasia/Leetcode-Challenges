@@ -123,14 +123,7 @@ class Node{
     }
 }
 */
-class Pair {
-    Node node;
-    int hd;
-    public Pair(Node _node, int _row) {
-        node = _node;
-        hd = _row;
-    }
-}
+
 class Solution
 {
     //Function to return a list of nodes visible from the top view 
@@ -138,60 +131,52 @@ class Solution
     static ArrayList<Integer> topView(Node root)
     {
         // add your code
-        TreeMap<Integer, Integer> map = new TreeMap<>();
-        Queue<Pair> myQ = new LinkedList<Pair>();
         ArrayList<Integer> res = new ArrayList<>();
-        if(root == null) return res;
-
-        myQ.offer(new Pair(root, 0));
         
-        while(!myQ.isEmpty()){
+        Queue<Pair> q = new LinkedList<Pair>();
+        TreeMap<Integer, Integer> map = new TreeMap<>();
+
+        q.add(new Pair(root, 0));
+        // System.out.println(q.remove().node.data);
+        
+        while(!q.isEmpty()){
             
-            Pair it = myQ.remove();
-            int hd = it.hd; 
-            Node temp = it.node; 
+            Pair curr = q.remove();
+            int currH = curr.h;
             
-            if(map.get(hd) == null) map.put(hd, temp.data);             
+            if(!map.containsKey(currH)){
+                map.put(currH, curr.node.data);
+            }
             
-            if(temp.left != null) myQ.add(new Pair(temp.left , hd - 1));
-            if(temp.right != null) myQ.add(new Pair(temp.right , hd + 1));
+            if(curr.node.left != null){
+                q.add(new Pair(curr.node.left, currH - 1));
+
+            }
             
-            
+            if(curr.node.right != null){
+
+                q.add(new Pair(curr.node.right, currH + 1));
+             }
         }
-        for (Map.Entry<Integer,Integer> entry : map.entrySet()) {
-            res.add(entry.getValue()); 
+        
+        for(Map.Entry<Integer, Integer> entry: map.entrySet() ){
+            res.add(entry.getValue());
         }
+        
         return res;
+        
+        
     }
+    
+
 }
 
 
-//     static ArrayList<Integer> topView(Node root)
-//     {
-//         ArrayList<Integer> ans = new ArrayList<>(); 
-//         if(root == null) return ans;
-//         Map<Integer, Integer> map = new TreeMap<>();
-//         Queue<Pair> q = new LinkedList<Pair>();
-//         q.add(new Pair(root, 0)); 
-//         while(!q.isEmpty()) {
-//             Pair it = q.remove();
-//             int hd = it.hd; 
-//             Node temp = it.node; 
-//             if(map.get(hd) == null) map.put(hd, temp.data); 
-//             if(temp.left != null) {
-                
-//                 q.add(new Pair(temp.left, hd - 1)); 
-//             }
-//             if(temp.right != null) {
-                
-//                 q.add(new Pair(temp.right, hd + 1)); 
-//             }
-//         }
-    
-//         for (Map.Entry<Integer,Integer> entry : map.entrySet()) {
-//             ans.add(entry.getValue()); 
-//         }
-//         return ans; 
-        
-//     }
-// }
+class Pair{
+    int h;
+    Node node;
+    Pair(Node node,int h){
+        this.h = h;
+        this.node = node;
+    }
+}
